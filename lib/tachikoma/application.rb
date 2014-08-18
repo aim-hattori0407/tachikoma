@@ -69,7 +69,7 @@ module Tachikoma
     def fetch
       clean
       sh(*([
-        'git', 'clone',
+        'git', 'clone', '--recursive',
         *@depth_option,
         @authorized_base_url,
         "#{Tachikoma.repos_path}/#{@build_for}"
