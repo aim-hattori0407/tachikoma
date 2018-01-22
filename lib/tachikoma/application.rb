@@ -93,15 +93,15 @@ module Tachikoma
             @bundler_key_file = 'Gemfile'
             @bundler_lock_file = 'Gemfile.lock'
           end
-          sh(*([
-            'bundle',
+          system(*([
+            "bundle",
             '--gemfile', @bundler_key_file,
             '--no-deployment',
             '--without', 'nothing',
             '--path', 'vendor/bundle',
             @parallel_option
           ].compact))
-          sh(*%w(bundle update))
+          system("bundle update")
 
           if @bundler_restore_bundled_with
             # restore_bundled_with
